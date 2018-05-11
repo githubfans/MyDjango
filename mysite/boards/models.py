@@ -14,9 +14,9 @@ class Board(models.Model):
 class Topic(models.Model):
     """docstring for Topic"""
     subject = models.CharField(max_length=255)
-    last_update = models.DateTimeField(auto_now_add=True)
     board = models.ForeignKey(Board, related_name='topics')
     starter = models.ForeignKey(User, related_name='topics')
+    last_updated = models.DateTimeField(auto_now_add=True)
 
 
 class Post(models.Model):
