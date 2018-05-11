@@ -1,0 +1,46 @@
+# OS
+*.DS_Store
+
+# Editors
+*.sw[po]
+.project
+.pydevproject
+*-project
+*-workspace
+.idea/
+.vscode/
+
+# Pythons
+__pycache__
+*.py[co]
+*.db
+*.ipynb
+*.egg-info
+
+# Caches
+*~
+.cache/
+build/
+dist/
+wheelhouse/
+
+*.log
+
+# Builds
+venv/
+.env
+docs/site
+
+# Tests
+.coverage*
+.tox
+
+# Projects
+.vagrant/
+*.secrets*
+_grab/*
+*.txt
+*.gz
+*.7z
+*.bz
+*.bz2
