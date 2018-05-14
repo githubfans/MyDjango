@@ -24,13 +24,14 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
+from accounts import views as accounts_views
 from boards import views
 
 
 urlpatterns = [
     url('^$', views.home, name='home'),
+    url(r'^signup/$', accounts_views.signup, name='signup'),
     url('^boards/(?P<pk>\d+)/$', views.board_topics, name='board_topics'),
     url('^boards/(?P<pk>\d+)/new/$', views.new_topic, name='new_topic'),
-    url('^admin/$', admin.site.urls),
-    # url('^polls/', include('polls.urls')),
+    url(r'^admin/', admin.site.urls),
 ]

@@ -32,6 +32,7 @@ ALLOWED_HOSTS = ['192.168.12.35', 'ibis']
 
 INSTALLED_APPS = [
     'boards.apps.BoardsConfig',
+    'accounts',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
