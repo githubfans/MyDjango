@@ -31,7 +31,6 @@ ALLOWED_HOSTS = ['192.168.12.35', 'ibis']
 # Application definition
 
 INSTALLED_APPS = [
-    'polls.apps.PollsConfig',
     'boards.apps.BoardsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
