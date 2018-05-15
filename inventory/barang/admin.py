@@ -12,10 +12,11 @@ class PostAdmin(admin.ModelAdmin):
             stock = form.save(commit=False)
             stock.created_by = request.user
             import datetime
-            currentDT = datetime.datetime.now()
-            stock.updated_at = currentDT
+            stock.updated_at = datetime.datetime.now()
             stock.save()
-            stock.kodebarang = '{0}.{1}' . format(stock.created_by_id, stock.id)
+            suffix = stock.namabarang.replace(' ', '')
+            suffix = suffix.decode('utf-8').lower()
+            stock.kodebarang = '{0}.{1}.{2}' . format(suffix[:3], stock.created_by_id, stock.id)
             stock.save()
 
 

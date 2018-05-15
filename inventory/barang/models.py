@@ -2,11 +2,6 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
-def default_user():
-    users = User.objects.get(username='sysadmin')
-    return users
-
-
 class Post(models.Model):
     """docstring for Topic"""
     id = models.AutoField(primary_key=True, unique=True)
