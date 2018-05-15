@@ -2,14 +2,19 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
+def default_user():
+    users = User.objects.get(username='sysadmin')
+    return users
+
+
 class Post(models.Model):
     """docstring for Topic"""
-    deskripsi = models.TextField(max_length=4000)
-    namabarang = models.TextField(max_length=30)
-    kodebarang = models.TextField(max_length=30)
-    updated_at = models.DateTimeField(null=True)
-    created_by = models.ForeignKey(User, related_name='posts')
-    updated_by = models.ForeignKey(User, null=True, related_name='+')
+    id = models.AutoField(primary_key=True, unique=True)
+    kodebarang = models.CharField(max_length=30, editable=False)
+    namabarang = models.CharField(max_length=30)
+    deskripsi = models.CharField(max_length=100, null=True)
+    updated_at = models.DateTimeField(null=True, editable=False)
+    created_by = models.ForeignKey(User, null=True, editable=False)
 
     def __str__(self):
         return self.namabarang
