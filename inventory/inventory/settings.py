@@ -25,7 +25,7 @@ SECRET_KEY = 'n9#ozcryxs8xxtm8nfztt_u65==61i#p1eezwy3@a!(d##^v!7'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.12.35', 'ibis']
+ALLOWED_HOSTS = ['192.168.10.100', '192.168.12.35', 'ibis']
 
 
 # Application definition

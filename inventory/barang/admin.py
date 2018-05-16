@@ -19,5 +19,15 @@ class PostAdmin(admin.ModelAdmin):
             stock.kodebarang = '{0}.{1}.{2}' . format(suffix[:3], stock.created_by_id, stock.id)
             stock.save()
 
+    def get_queryset(self, request):
+        qs = super(PostAdmin, self).get_queryset(request)
+        return qs.filter(created_by=request.user)
+
+    # def has_change_permission(self, request, obj=None):
+    #     if not obj:
+    #         # the changelist itself
+    #         return True
+    #     return obj.user == request.user
+
 
 admin.site.register(Post, PostAdmin)
