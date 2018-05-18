@@ -5,6 +5,8 @@ from .models import PostCategory, Post
 class PostCategoryAdmin(admin.ModelAdmin):
 
     list_display = ('nama_kategori', 'deskripsi_kategori', 'created_by', 'updated_at')
+    search_fields = ['nama_kategori', 'deskripsi_kategori']
+
     # actions = notne
 
     def save_model(self, request, obj, form, change):
@@ -19,7 +21,7 @@ class PostCategoryAdmin(admin.ModelAdmin):
 class PostAdmin(admin.ModelAdmin):
 
     list_display = ('nama_barang', 'kode_barang', 'kategori', 'created_by', 'updated_at')
-    list_select_related = ('kategori', 'created_by')
+    search_fields = ['kategori__nama_kategori', 'kategori__deskripsi_kategori', 'nama_barang']
     # actions = notne
 
     def save_model(self, request, obj, form, change):
