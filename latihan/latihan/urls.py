@@ -29,7 +29,8 @@ router = routers.DefaultRouter()
 router.register(r'postcategory', views.PostCategoryViewSet)
 router.register(r'post', views.PostViewSet)
 urlpatterns = [
-        url(r'^admin/', admin.site.urls),
-        url(r'^latihanapi/', include(router.urls)),
-        url(r'^latihanapi-auth/', include('rest_framework.urls', namespace='rest_framework'))
+    url(r'^admin/', admin.site.urls),
+    # url(r'^admin/logout/', admin.site.login),
+    url(r'^latihanapi/', include(router.urls)),
+    url(r'^latihanapi-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]
