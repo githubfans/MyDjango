@@ -1,7 +1,7 @@
 from .models import PostCategory, Post
 from rest_framework import viewsets
 from .serializers import PostCategorySerializer, PostSerializer
-from django.shortcuts import get_object_or_404
+# from django.shortcuts import get_object_or_404
 
 
 class PostCategoryViewSet(viewsets.ModelViewSet):

@@ -32,14 +32,14 @@ ALLOWED_HOSTS = ['192.168.10.100', '192.168.12.35', 'ibis']
 # Application definition
 
 INSTALLED_APPS = [
+    'rest_framework',
+    'latihanapi',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework',
-    'latihanapi',
 ]
 
 MIDDLEWARE = [
@@ -126,6 +126,13 @@ REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+        #'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
+        'rest_framework.permissions.IsAuthenticated', #The default permission policy may be set globally
+        #'rest_framework.permissions.AllowAny', # this setting defaults to allowing unrestricted access
     ]
 }
+
+# MIDDLEWARE_CLASSES = (
+#     ...
+#     'rest_framework.get_username.RequestMiddleware',
+# )
