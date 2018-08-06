@@ -33,6 +33,7 @@ ALLOWED_HOSTS = ['aji.com', 'satu.aji.com', 'dua.aji.com', 'tiga.aji.com', 'empa
 SHARED_APPS = (
     'tenant_schemas',
     'tenants',
+    'barang',
     # 'django_simple.authentication',
     'django.contrib.contenttypes',
     'django.contrib.admin',
@@ -45,13 +46,14 @@ SHARED_APPS = (
 TENANT_APPS = (
     # The following Django contrib apps must be in TENANT_APPS
     'django.contrib.contenttypes',
+    'django.contrib.admin',
     # 'django_simple.todo',
 )
 
 INSTALLED_APPS = list(SHARED_APPS) + [app for app in TENANT_APPS if app not in SHARED_APPS]
 
 
-MIDDLEWARE_CLASSES = [
+MIDDLEWARE = [
     'tenant_schemas.middleware.TenantMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -104,6 +106,8 @@ DATABASE_ROUTERS = (
     'tenant_schemas.routers.TenantSyncRouter',
 )
 
+MEDIA_ROOT = '/data/media'
+MEDIA_URL = '/media/'
 DEFAULT_FILE_STORAGE = 'tenant_schemas.storage.TenantFileSystemStorage'
 
 
@@ -131,7 +135,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Jakarta'
 
 USE_I18N = True
 
