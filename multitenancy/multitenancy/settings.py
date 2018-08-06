@@ -25,7 +25,7 @@ SECRET_KEY = '6kulab2(q81cbqnktqc6-$hksb5)39-1=m@t5pt(*c12on$2c-'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['aji.com', 'satu.aji.com', 'dua.aji.com', 'tiga.aji.com', 'empat.aji.com', ]
 
 
 # Application definition
