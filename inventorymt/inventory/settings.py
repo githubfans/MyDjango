@@ -30,17 +30,38 @@ ALLOWED_HOSTS = ['inventory.com']
 
 # Application definition
 
-INSTALLED_APPS = [
+SHARED_APPS = (
+    'tenant_schemas',
+    'tenants',
+    'barang',
+    # 'django_simple.authentication',
+    'django.contrib.contenttypes',
     'django.contrib.admin',
     'django.contrib.auth',
-    'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'barang',
-]
+)
 
-MIDDLEWARE = [
+TENANT_APPS = (
+    # The following Django contrib apps must be in TENANT_APPS
+    'django.contrib.contenttypes',
+)
+
+INSTALLED_APPS = list(SHARED_APPS) + [app for app in TENANT_APPS if app not in SHARED_APPS]
+
+# INSTALLED_APPS = [
+#     'django.contrib.admin',
+#     'django.contrib.auth',
+#     'django.contrib.contenttypes',
+#     'django.contrib.sessions',
+#     'django.contrib.messages',
+#     'django.contrib.staticfiles',
+#     'barang',
+# ]
+
+MIDDLEWARE_CLASSES = [
+    'tenant_schemas.middleware.TenantMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -50,7 +71,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'inventory.urls'
+ROOT_URLCONF = 'inventorymt.urls'
 
 TEMPLATES = [
     {
@@ -68,7 +89,9 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'inventory.wsgi.application'
+TENANT_MODEL = "tenants.Tenant"
+
+WSGI_APPLICATION = 'inventorymt.wsgi.application'
 
 
 # Database
@@ -76,10 +99,22 @@ WSGI_APPLICATION = 'inventory.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'tenant_schemas.postgresql_backend',
+        'NAME': 'inventory',
+        'USER': 'aji',
+        'PASSWORD': '1qaz1qaz',
+        'HOST': 'localhost',
+        'PORT': '5432'
     }
 }
+
+DATABASE_ROUTERS = (
+    'tenant_schemas.routers.TenantSyncRouter',
+)
+
+MEDIA_ROOT = '/data/media'
+MEDIA_URL = '/media/'
+DEFAULT_FILE_STORAGE = 'tenant_schemas.storage.TenantFileSystemStorage'
 
 
 # Password validation

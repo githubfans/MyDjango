@@ -35,12 +35,12 @@ SHARED_APPS = (
     'tenants',
     'barang',
     # 'django_simple.authentication',
-    'django.contrib.contenttypes',
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
+    # 'django.contrib.contenttypes',
+    # 'django.contrib.admin',
+    # 'django.contrib.auth',
+    # 'django.contrib.sessions',
+    # 'django.contrib.messages',
+    # 'django.contrib.staticfiles',
 )
 
 TENANT_APPS = (
@@ -48,6 +48,12 @@ TENANT_APPS = (
     'django.contrib.contenttypes',
     'django.contrib.admin',
     # 'django_simple.todo',
+    # 'django.contrib.contenttypes',
+    # 'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
 )
 
 INSTALLED_APPS = list(SHARED_APPS) + [app for app in TENANT_APPS if app not in SHARED_APPS]
@@ -83,6 +89,7 @@ TEMPLATES = [
 ]
 
 TENANT_MODEL = "tenants.Tenant"
+TENANT_USERS_DOMAIN = "aji.com"
 
 
 WSGI_APPLICATION = 'multitenancy.wsgi.application'
@@ -96,7 +103,7 @@ DATABASES = {
         'ENGINE': 'tenant_schemas.postgresql_backend',
         'NAME': 'tenants',
         'USER': 'aji',
-        'PASSWORD': '1qaz1qaz',
+        'PASSWORD': 'aji1234567',
         'HOST': 'localhost',
         'PORT': '5432'
     }
