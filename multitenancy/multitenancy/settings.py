@@ -34,6 +34,7 @@ SHARED_APPS = (
     'tenant_schemas',
     'tenants',
     'barang',
+    'customers',
     # 'django_simple.authentication',
     # 'django.contrib.contenttypes',
     # 'django.contrib.admin',
@@ -71,6 +72,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'multitenancy.urls'
+PUBLIC_SCHEMA_URLCONF = 'multitenancy.urls_public'
 
 TEMPLATES = [
     {
@@ -89,7 +91,10 @@ TEMPLATES = [
 ]
 
 TENANT_MODEL = "tenants.Tenant"
+TENANT_DOMAIN_MODEL = "tenants.Domain"
 TENANT_USERS_DOMAIN = "aji.com"
+
+PG_EXTRA_SEARCH_PATHS = ['extensions']
 
 
 WSGI_APPLICATION = 'multitenancy.wsgi.application'

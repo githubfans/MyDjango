@@ -11,3 +11,4 @@ name = "pypi"
 
 [packages]
 
+"e120b42" = {path = "./django-db-multitenant"}

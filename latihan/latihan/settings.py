@@ -26,7 +26,7 @@ SECRET_KEY = '8gn=t%yk2z8i2dzk7730$ig@)%qu)hz1)0a5o!#w)s)i)ad#a+'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.10.100', '192.168.12.35', 'ibis']
+ALLOWED_HOSTS = ['aji.com']
 
 
 # Application definition
@@ -108,7 +108,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Jakarta'
 
 USE_I18N = True
 
@@ -127,7 +127,7 @@ REST_FRAMEWORK = {
     # or allow read-only access for unauthenticated users.
     'DEFAULT_PERMISSION_CLASSES': [
         #'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
-        'rest_framework.permissions.IsAuthenticated', #The default permission policy may be set globally
+        'rest_framework.permissions.IsAuthenticated',#The default permission policy may be set globally
         #'rest_framework.permissions.AllowAny', # this setting defaults to allowing unrestricted access
     ]
 }
