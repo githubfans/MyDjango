@@ -39,7 +39,7 @@ docs/site
 .vagrant/
 *.secrets*
 _grab/*
-*.txt
+# *.txt
 *.gz
 *.7z
 *.bz
